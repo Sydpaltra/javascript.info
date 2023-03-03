@@ -1,0 +1,91 @@
+<html>
+    <body>
+        <!-- Using "this in literal object "-->
+        <script>
+            "use strict";
+            //Here the function makeUser returns an object.
+            //What is the result of accessing its ref? Why?
+
+            function makeUser() {
+            return {
+                name: "John",
+                ref: this
+            };
+            }
+
+            let user = makeUser();
+
+            alert( user.ref.name ); // What's the result? The result is an error -> when function is run ref : this results in an undefined -> Hence ref.name leads to an error
+        </script>
+
+        <!-- Create a calculator -->
+        <script>
+            "use strict";
+            // Create an object calculator with three methods:
+            // read() prompts for two values and saves them as object properties with names a and b respectively.
+            // sum() returns the sum of saved values.
+            // mul() multiplies saved values and returns the result.
+
+            let calculator = {
+                read() {
+                    this.a = +prompt("a?", 0);
+                    this.b = +prompt("a?", 0);
+                },
+                sum() {
+                    return this.a+this.b;
+                },
+                mul() {
+                    return this.a*this.b;
+                }
+            };
+
+            calculator.read();
+            alert( calculator.sum() );
+            alert( calculator.mul() );
+        </script>
+
+        <!-- Chaining -->
+        <script>
+            "use strict";
+            // There’s a ladder object that allows to go up and down:
+            let ladder = {
+                step: 0,
+                up() {
+                    this.step++;
+                },
+                down() {
+                    this.step--;
+                },
+                showStep: function() { // shows the current step
+                    alert( this.step );
+                }
+            };
+            // Now, if we need to make several calls in sequence, can do it like this:
+            ladder.up();
+            ladder.up();
+            ladder.down();
+            ladder.showStep(); // 1
+            ladder.down();
+            ladder.showStep(); // 0
+            // Modify the code of up, down and showStep to make the calls chainable, like this:
+            ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
+            // The solution is to return the object itself from every call.
+            let ladder = {
+                step: 0,
+                up() {
+                    this.step++;
+                    return this; // Every function returns something. If this is not specifically specified, when it returns "undefined"
+                                 // without this line ladder.step is increased by one, but we still return undefined -> The 2nd .up() has no reference
+                },
+                down() {
+                    this.step--;
+                    return this;
+                },
+                showStep() {
+                    alert( this.step );
+                    return this;
+                }
+            };
+        </script>
+    </body>
+</html>
