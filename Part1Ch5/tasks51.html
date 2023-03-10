@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <!-- Can I add a string property? -->
+        <script>
+            "use strict";
+            // Consider the following code:
+            let str = "Hello";
+
+            str.test = 5;
+
+            alert(str.test);
+
+            //  What do you think, will it work? What will be shown?
+            // In the first line, we're creating a simpel string
+            // Then, we are trying to access a property of the string -> To this end, an object wrapper is created around it
+            // In strict mode: Forbidden to write into this property -> We get an error message
+            // In "non-strict-mode" the property is added, but as soon as line 9 fully executed, the object wrapper and with it the property diasppears -> We get an undefined
+        </script>
+    </body>
+</html>

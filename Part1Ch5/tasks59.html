@@ -1,0 +1,49 @@
+<html>
+    <body>
+        <!-- Sum the properties -->
+        <script>
+            "use strict";
+
+            // There is a salaries object with arbitrary number of salaries.
+            // Write the function sumSalaries(salaries) that returns the sum of all salaries using Object.values and the for..of loop.
+            // If salaries is empty, then the result must be 0.
+
+            let salaries = {
+                "John": 100,
+                "Pete": 300,
+                "Mary": 250
+            };
+
+            let sumSalaries = function(salaries){
+                let sumOfSalaries = 0;
+                if (isEmpty(salaries)){
+                    return sumOfSalaries;
+                } else {
+                    for(let values of Object.values(salaries)){
+                        sumOfSalaries += values;
+                    }
+                    return sumOfSalaries;
+                }
+            }
+        </script>
+
+        <!-- Count properties -->
+        <script>
+            "use strict";
+            // Write a function count(obj) that returns the number of properties in the object:
+            let user = {
+                name: 'John',
+                age: 30
+            };
+
+            let count = function(obj) {
+                let counter = 0;
+                for(let keys of Object.keys(obj)){
+                    counter++;
+                }
+                return counter;
+            }
+            alert( count(user) ); // 2
+        </script>
+    </body>
+</html>

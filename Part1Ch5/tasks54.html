@@ -1,0 +1,94 @@
+<html>
+    <body>
+        <!-- Is array copied? -->
+        <script>
+            "use strict";
+            // What is this code going to show?
+            let fruits = ["Apples", "Pear", "Orange"];
+
+            // push a new value into the "copy"
+            let shoppingCart = fruits;
+            shoppingCart.push("Banana");
+
+            // what's in fruits?
+            alert( fruits.length ); // 4 -> Arrays = objects -> Both shoppingCart and fruits reference the same object
+        </script>
+
+        <!-- Array operations -->
+        <script>
+            // Let's try 5 array operations
+            // 1. Create an array styles with items "Jazz" and "Blues"
+            let styles = ["Jazz", "Blues"];
+            // 2. Append "Rock-n-Roll" to the end
+            styles.push("Rock-n-Roll");
+            // 3. Replace the value in the middle with "Classics". Your code for finding the middle value should work for any arrays with odd length
+            if(styles.length % 2 == 1){
+               let pos = floor(styles.length / 2)
+                styles[pos] = "Classics";
+            }
+            // 4. Strip off the first value of the array and show it
+            alert(style.shift());
+            // 5. Prepend "Rap" and "Raggae" to the array
+            style.unshift("Rap", "Raggae");
+        </script>
+
+        <!-- Calling in an array context -->
+        <script>
+            "use strict";
+            // What is the result? Why?
+            let arr = ["a", "b"];
+
+            arr.push(function() {
+            alert( this );
+            });
+
+            arr[2](); // We are appending the fct? Hence, we are calling the function and are then alerting the array piece by piece?
+        </script>
+
+        <!-- Sum input numbers -->
+        <script>
+            "use strict";
+            // Write the function sumInput() that:
+
+            // Asks the user for values using prompt and stores the values in the array.
+            // Finishes asking when the user enters a non-numeric value, an empty string, or presses “Cancel”.
+            // Calculates and returns the sum of array items.
+            // P.S. A zero 0 is a valid number, please don’t stop the input on zero.
+
+            let sumInput = function(){
+                let numbers = [];
+
+                entry = prompt("Pls enter a number", "")
+                while(entry != "null" && entry != "" && isFinite(entry)){
+                    numbers.push(+entry);
+                }
+
+                let sum = 0;
+                    for(arrayentry of numbers){
+                        sum += arrayentry;
+                    }
+                return sum;
+            }
+        </script>
+
+        <!-- A maximal subarray -->
+        <script>
+            "use strict";
+            // The input is an array of numbers, e.g. arr = [1, -2, 3, 4, -9, 6].
+            // The task is: find the contiguous subarray of arr with the maximal sum of items.
+
+            // Write the function getMaxSubSum(arr) that will return that sum.
+
+            let getMaxSubSum = function(arr){
+                for(let entry = 0; entry < arr.lengh; entry++){
+                    let sum = 0;
+                    for(let secondcounter = entry; secondcounter < arr.length; secondcounter++){
+                        sum += oldsum[secondcounter]
+                        maxsum = max(maxsum, oldsum);
+                    }
+                }
+                return maxsum;
+            }
+        </script>
+    </body>
+</html>

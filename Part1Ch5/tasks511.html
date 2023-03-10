@@ -1,0 +1,131 @@
+<html>
+    <body>
+        <!-- Create a date -->
+        <script>
+            "use strict";
+            // Create a Date object for the date Feb 20, 2012, 3:12am, the time zone is local
+
+            new date = Date("2012-01-20T03:12");
+            alert (date);
+
+        </script>
+
+        <!-- Show a weekday  -->
+        <script>
+            "use strict";
+            // Write a function getWeekday(date) to show the weekday in short format 'MO', 'TUE', 'WE', 'TH', 'FR', 'SA', 'SU'
+
+            new getWeekDay = function(date) {
+                if (getDay(date) == 0) {
+                    return 'SU';
+                } else if (getDay(date) == 1) {
+                    return 'MO';
+                } else if (getDay(date) == 2) {
+                    return 'TU';
+                } else if (getDay(date) == 3) {
+                    return 'WE';
+                } else if (getDay(date) == 4) {
+                    return 'TH';
+                } else if (getDay(date) == 5){
+                    return 'FR';
+                } else {
+                    return 'SA';
+                }(get)
+                }
+        </script>  
+
+        <!-- European weekday -->
+        <script>
+            "use strict";
+            // European countries have days of week starting with Monday (number 1), then Tuesday (number 2) and till Sunday (number 7). Write a function getLocalDay(date) that returns the “European” day of week for date.
+            function getLocalDay(date) {
+                let days = [7,1,2,3,4,5,6]
+
+                return days[date.getDay()];
+            }
+        </script>
+
+        <!-- Which day of month was many days ago? -->
+        <script>
+            "use strict";
+            // Create a function getDateAgo(date, days) to return the day of month days ago from the date.
+
+            // For instance, if today is 20th, then getDateAgo(new Date(), 1) should be 19th and getDateAgo(new Date(), 2) should be 18th.
+
+            // Should work reliably for days=365 or more:
+
+            let getDateAgo = function(date, days) {
+                let dateCopy = new Date(date); 
+                dateCopy.setDate(date.getDate() - days);
+                return dateCopy.getDate();
+            }
+        </script>
+
+        <!-- Last day of month? -->
+        <script>
+            "use strict";
+            // Write a function getLastDayOfMonth(year, month) that returns the last day of month. Sometimes it is 30th, 31st or even 28/29th for Feb.
+            let getLastDayOfMonth = function(year, month){
+                let date = new Date(year, month + 1, 0);
+                return date.getDate();
+            }
+        </script>
+
+        <!-- How many seconds have passed today? -->
+        <script>
+            "use strict";
+            // Write a function getSecondsToday() that returns the number of seconds from the beginning of today.
+
+            let getSecondsToday = function() {
+                let date = new Date();
+                let dateMidnight = new Date(date);
+                dateMidnight.setHours(0, 0, 0, 0);
+                let difference = date - dateMidnight; // ms difference
+                return Math.round(difference / 1000);
+            }
+        </script>
+
+        <!-- How many seconds till tomorrow? -->
+        <script>
+            "use strict";
+            // Create a function getSecondsToTomorrow() that returns the number of seconds till tomorrow.
+            let getSecondsTomorrow = function() {
+                let date = new Date();
+                let dateTomorrow = new Date(date);
+                dateTomorrow.setDate(dateTomorrow.getDate() + 1);
+                let difference = dateTomorrow - date ;
+                return Math.round(difference / 1000);
+            }
+        </script>
+
+        <!-- Format the relative date -->
+        <script>
+            "use strict";
+            // Write a function formatDate(date) that should format date as follows:
+
+            // If since date passed less than 1 second, then "right now".
+            // Otherwise, if since date passed less than 1 minute, then "n sec. ago".
+            // Otherwise, if less than an hour, then "m min. ago".
+            // Otherwise, the full date in the format "DD.MM.YY HH:mm". That is: "day.month.year hours:minutes", all in 2-digit format, e.g. 31.12.16 10:00.
+            
+            let formatDate = function(date) {
+                let now = new Date();
+                let difference = now - date;
+                if (difference < 1000){
+                    return "right now";
+                } else if (difference < 1000 * 60) {
+                    return `${difference / (1000 * 60)} sec ago`;
+                } else if (difference < 1000 * 3600 ) {
+                    return `${difference / (1000 * 3600)} min ago`;
+                } else {
+                    let day = date.getDate().slide(-2)
+                    let month = date.getMonth();
+                    let year = date.getFullYear().slice(2,4);
+                    let hours = date.getHours();
+                    let minutes = date.getMinutes();
+                    return `${day}.${month}.${year} ${hours}:${minutes}`;
+                }
+            }
+        </script>
+    </body>
+</html>

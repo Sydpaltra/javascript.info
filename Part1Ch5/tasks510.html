@@ -1,0 +1,44 @@
+<html>
+    <body>
+        <!--Destructuring assignment -->
+        <script>
+            "use strict";
+            // we have an Object:
+            let user = {
+                name: "John",
+                years: 30
+            };
+            // name property into the variable name.
+            // years property into the variable age.
+            // isAdmin property into the variable isAdmin (false, if no such property) 
+            let {name, years:age, isAdmin = false} = user;
+        </script>
+
+        <!-- -->
+        <script>
+            "use strict";
+            // There is salaries object
+            let salaries = {
+                "John": 100,
+                "Pete": 300,
+                "Mary": 250
+            };
+            // Create the function topSalary(salaries) that returns the name of the top-paid person.
+            // If salaries is empty, it should return null.
+            // If there are multiple top-paid persons, return any of them.
+            // P.S. Use Object.entries and destructuring to iterate over key/value pairs.
+
+            let topSalary = function(salaries) {
+                maxSalary = 0;
+                topPaid = null;
+                for(let [name, salary] of Object.entries(salaries)) {
+                    if(maxSalary < salary){
+                        maxSalary = salary;
+                        topPaid = name;
+                    }
+                }
+                return topPaid;
+            }
+        </script>
+    </body>
+</html>

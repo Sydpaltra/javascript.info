@@ -1,0 +1,84 @@
+<html>
+    <body>
+        <!-- Sum numbers from the visitor -->
+        <script>
+            "use strict";
+            // Create a script that prompts the visitor to enter two numbers and then shows their sum.
+            // P.S. There is a gotcha with types.
+            let a = +prompt("Pls enter a number", 0)
+            let b = +prompt("Pls enter a second number", 0)
+
+            alert(`The sum is ${a+b}`);
+        </script>
+
+         <!-- Why 6.35.toFixed(1) == 6.3? -->
+        <script>
+            "use strict";
+            // According to the documentation Math.round and toFixed both round to the nearest number: 0..4 lead down while 5..9 lead up.
+            // For instance
+            alert( 1.35.toFixed(1) ); // 1.4
+            // In the similar example below, why is 6.35 rounded to 6.3, not 6.4?
+            alert( 6.35.toFixed(1) ); // 6.3??? -> Issue 6.35 isn't exactly 6.35 but rather 6.34999999999999964473
+            //How to round 6.35 the right way
+            alert(round(6.35*10)/10); 
+                
+        </script>
+    
+        <!-- Repeat until the input is a number -->
+        <script>
+           "use strict";
+            // Create a function readNumber which prompts for a number until the visitor enters a valid numeric value.
+            // The resulting value must be returned as a number.
+            // The visitor can also stop the process by entering an empty line or pressing “CANCEL”. In that case, the function should return null.
+
+            let readNumber = function() {
+                let value = +prompt("Please enter a number", "")
+                while(!isFinite(value)){
+                    if(value == null || value == ""){
+                        return null;
+                    } else {
+                    value = +prompt("This wasn't a valid entry. Pls enter a number", "")
+                    }
+                }
+                return value;
+            }
+        </script>
+
+        <!-- An occasional infinite loop -->
+        <script>
+            "use strict";
+            // This loop is infinite. It never ends. Why?
+            let i = 0;
+            while (i != 10) {
+            i += 0.2;
+            }  
+            // We are constantly adding 0.2 to i -> My assumption is that due to some round issue, even when the next i shold be 10, we obtain sth like 10.000002 
+            // With the next addition we pass 12 -> We're stuck in an infinite lopp
+        </script>
+
+        <!-- A random number from min to max -->
+        <script>
+            "use strict";
+            // The built-in function Math.random() creates a random value from 0 to 1 (not including 1).
+            // Write the function random(min, max) to generate a random floating-point number from min to max (not including max).
+            let random = function(min,max){
+                let zerotoone = Math.random()
+                let randminmax = max - (1-zerotoone)*(max-min);
+                return randminmax;
+            }
+        </script>
+
+        <!-- A random interget from min to max-->
+        <script>
+            "use strict";
+            // Create a function randomInteger(min, max) that generates a random integer number from min to max including both min and max as possible values.
+            // Any number from the interval min..max must appear with the same probability.
+            let randomInteger = function(min, max) {
+                let zerotoone = Math.random()
+                let randminmax = max + 0.5 - (1-zerotoone) * ((max+0.5)-(min-0.5)) // We're computing random numbers in the interval [min-0.5, max+0.5) and then round to the nearest integer 
+                                                                                   // -> Else: the interval boundary are twice less likely to be chosen due to some weird rounding stuff
+                return round(randminmax);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <!-- Filter unique array members -->
+        <script>
+            "use strict";
+            // Let arr be an array
+            // Create a function unique(arr) that should return an array with unique items of array
+
+            let unique = function(arr){
+
+                let set = new Set();
+                for (let ntry of arr){
+                    set.add(entry);
+                }
+
+                return set;
+            }
+        </script>
+
+        <!-- Filter anagrams -->
+        <script>
+            "use strict";
+            // Anagrams are words that have the same number of same letters, but in different orders
+            // Write a function aclean(arr) that returns an array cleaned from anagrams
+
+            let aclean = function(arr){
+
+                let map = new Map();
+
+                for (let word of arr){
+                    let sorted = word.toLowerCase().split('').sort().join('');
+                    map.set(sorted, word);
+                }
+
+                return Array.from(map.values);
+            }
+        </script>
+
+        <!-- Iterable keys -->
+        <script>
+            "use strict";
+            // We'd like to get an array of map.keys() in a variable and then apply array-specific methods to it, e.g. push
+            // But that doesn't work: 
+            let map = new Map();
+
+            map.set("name", "John");
+
+            let keys = Array.from(map.keys()); // -> Now keys is an array
+
+            // Error: keys.push is not a function
+            keys.push("more");
+
+            //Why? How can we fx the code to make keys.push work? See line 48
+
+
+        </script>
+    </body>
+</html>
