@@ -1,0 +1,117 @@
+<html>
+    <body>
+        <!-- Sum all numbers till the given one -->
+        <script>
+            "use strict";
+            // Write a function sumTo(n) that calculates the sum of numbers 1 + 2 + 3 + ... + n
+            //Using a for loop
+            let sumTo = function(n) {
+                for(i = 0; i <= n; i++) {
+                    sum += i;
+                }
+                return sum;
+            }
+            //Using a recursion
+            let sumTo = function(n) {
+                if(n == 1){
+                    return n;
+                } else {
+                    return n + sumTo(n-1);
+                }
+            }
+        </script>
+            
+        <!-- Calculate factorial -->
+        <script>
+            "use strict";
+            // The factorial of a natural number is a number multiplied by "number minus one", then by "number minus two", and so on till 1. The factorial of n is denoted as n!
+            // The task is to write a function factorial(n) that calculates n! using recursive calls.
+            let factorial = function(n) {
+                if (n == 1){
+                    return n;
+                } else {
+                    return n * factorial(n-1);
+                }
+            }
+        </script>
+
+        <!-- Fibonacci numbers -->
+        <script>
+            "use strict";
+            // Write a function fib(n) that returns the n-th Fibonacci number.
+            let fib = function(n) {
+                if(n<3){
+                    return 1;
+                }  else {
+                    return fib(n-1) + fib(n-2);
+                }
+            }
+        </script>
+
+        <!-- Output a single linked list -->
+        <script>
+            "use strict";
+            // Let’s say we have a single-linked list (as described in the chapter Recursion and stack):
+            let list = {
+                value: 1,
+                next: {
+                    value: 2,
+                    next: {
+                        value: 3,
+                        next: {
+                            value: 4,
+                            next: null
+                        }
+                    }
+                }
+            };
+            //Write a function printList(list) that outputs the items one-by-one
+            //Loop
+            let printList = function(list) {
+                let temporary = list;
+                while(temporary) {
+                    alert(temporary.value);
+                    temporary = temporary.next;
+                }
+            }
+            //Rescursive
+            let printList = function(list) {
+                alert(list.value); // output the current item
+
+                if (list.next) {
+                printList(list.next); // do the same for the rest of the list
+                }
+             }
+        </script>
+
+        <!-- Output a single-linked list in the reverse order -->
+        <script>
+            "use strict";
+            // Output a single-linked list from the previous task Output a single-linked list in the reverse order.
+            // Make two solutions: using a loop and using a recursion.
+
+            //Using a recursion
+            let printReverseList = function(list) {
+                if(list.next){
+                    printReverseList(list.next);
+                }
+                alert(list.value)
+            }
+            //Using a loop
+            let printReverseList = function(list){
+                let arr = [];
+                let copy = list;
+                // Going through the list in the direct order and remembering them in an array
+                while(copy) {
+                    arr.push(copy.value);
+                    copy = copy.next;
+                }
+
+                // Output what we remember in reverse order
+                for(let i = arr.length - 1; i >= 0; i--){
+                    alert(arr[i]);
+                }
+            }
+        </script>
+    </body>
+</html>
