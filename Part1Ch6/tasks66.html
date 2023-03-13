@@ -1,0 +1,55 @@
+<html>
+    <body>
+        <!-- Set and decrease or counter -->
+        <script>
+            "use strict";
+            // Modify the code of makeCounter() so that the counter can also decrease and set the number:
+            // counter() should return the next number (as before).
+            // counter.set(value) should set the counter to value.
+            // counter.decrease() should decrease the counter by 1.
+            // See the sandbox code for the complete usage example.
+            // P.S. You can use either a closure or the function property to keep the current count. Or write both variants.
+            function makeCounter() {
+
+                function counter() {
+                return counter.count++;
+                };
+
+                function decrease() {
+                return counter.count--;
+                };
+
+
+                function set(value) {
+                return counter.count = value;
+                };
+
+                counter.count = 0;
+
+                return counter;
+            }
+       </script>
+
+        <!-- Sum with an arbitrary amount of brackets -->
+        <script>
+            "use strict";
+            // Write function sum that would work like this :
+            sum(1)(2) == 3;
+
+            let sum = function(a){ 
+                let currentSum = a;
+
+                function f(b){
+                    currentSum += b;
+                    return f;
+                }
+
+                f.toString = function() { // For the comparison sum(1)(2) == 3 either side must be converted to a string, only left-hand side must be converted to a number! Here, we implement said conversion
+                    return currentSum;
+                }
+
+                return f;
+            }
+        </script>
+    </body>
+</html>
